@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import './App.css';
 import axios from 'axios';
+
+import './App.css';
+import { Todo } from './Todo'
 
 function App() {
   // stateへの型の指定
@@ -19,7 +21,9 @@ function App() {
       <button onClick={onClickFetchData}>データ取得</button>
       {todos.map((todo) => {
         return (
-          <p key={todo.id}>{todo.title}</p>
+          // <p key={todo.id}>{todo.title}</p>
+          // 下記のコードだと、useridがundefinedになる
+          <Todo key={todo.id} title={todo.title} userid={todo.userid} />
         )
       })}
     </div>
