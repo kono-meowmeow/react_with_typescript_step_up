@@ -4,14 +4,24 @@ import axios from 'axios';
 import './App.css';
 import { Todo } from './Todo'
 
+// typeを使って、取得するTodoオブジェクトの各要素に型を与える
+type TodoType = {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+};
+
 function App() {
   // stateへの型の指定
   // useState<型>で型を指定する
   // そうすることで、変数と更新関数の型が指定される
-  const [todos, setTodos] = useState<any>([]);
+  const [todos, setTodos] = useState<Array<TodoType>>([]);
 
   const onClickFetchData = () => {
-    axios.get("https://jsonplaceholder.typicode.com/todos").then((res) => {
+    // axiosで取得するデータの型を指定する
+    // axios.get<型>
+    axios.get<Array<TodoType>>("https://jsonplaceholder.typicode.com/todos").then((res) => {
       setTodos(res.data);
     });
   };
@@ -23,7 +33,8 @@ function App() {
         return (
           // <p key={todo.id}>{todo.title}</p>
           // 下記のコードだと、useridがundefinedになる
-          <Todo key={todo.id} title={todo.title} userid={todo.userid} />
+          // todo.と入力すると、候補(userId)を出してくれる
+          <Todo key={todo.id} title={todo.title} userid={todo.userId} />
         )
       })}
     </div>
