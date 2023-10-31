@@ -34,7 +34,8 @@ function App() {
           // <p key={todo.id}>{todo.title}</p>
           // 下記のコードだと、useridがundefinedになる
           // todo.と入力すると、候補(userId)を出してくれる
-          <Todo key={todo.id} title={todo.title} userid={todo.userId} />
+          // 必要なpropsが足りていなくてもエラーとならない問題があるので、propsに型を与えて解決する(Todo.tsxで)
+          <Todo key={todo.id} title={todo.title} userId={todo.userId} completed={todo.completed} />
         )
       })}
     </div>
