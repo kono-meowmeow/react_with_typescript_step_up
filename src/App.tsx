@@ -5,6 +5,17 @@ import './App.css';
 import { Todo } from './Todo'
 import { TodoType } from './types/todo'
 import { Text } from './Text'
+import { UserProfile } from './UserProfile';
+import { User } from './types/user';
+
+const user: User = {
+  name: "紫宮",
+  hobbies: ["ゲーム", "猫", "ラーメン"]
+};
+
+const user2: User = {
+  name: "無趣味マン"
+};
 
 function App() {
   // stateへの型の指定
@@ -22,6 +33,8 @@ function App() {
 
   return (
     <div className="App">
+      <UserProfile user={user} />
+      <UserProfile user={user2} />
       <Text color="red" fontSize="24px" />
       <button onClick={onClickFetchData}>データ取得</button>
       {todos.map((todo) => {
