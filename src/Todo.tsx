@@ -11,14 +11,14 @@
 
 // 上記のコードは下記のようにする
 
+import { FC } from "react";
 import { TodoType } from "./types/todo";
-
 
 // props: 型名 で型を指定する
 // Pick<型名, "プロパティ名" | "プロパティ名"> で必要なプロパティのみを抽出する
 // Omit<型名, "プロパティ名" | "プロパティ名" | "プロパティ名"> で不要なプロパティを除外する
 // export const Todo = (props: Pick<TodoType, "userId" | "title" | "completed">) => {
-export const Todo = (props: Omit<TodoType, "id">) => {
+export const Todo: FC<Omit<TodoType, "id">> = (props) => {
   // 要素名 = 値 でデフォルトの値を決めることができるので、必須ではない要素にはデフォルトの値を決めておくと良い
   const { title, userId, completed = false } = props;
   const completeMark = completed ? "[完]" : "[未]"
