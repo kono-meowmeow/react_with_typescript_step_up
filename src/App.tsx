@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 import { Todo } from './Todo'
 import { TodoType } from './types/todo'
+import { Text } from './Text'
 
 function App() {
   // stateへの型の指定
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <div className="App">
+      <Text color="red" fontSize="24px" />
       <button onClick={onClickFetchData}>データ取得</button>
       {todos.map((todo) => {
         return (
