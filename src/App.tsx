@@ -3,14 +3,7 @@ import axios from 'axios';
 
 import './App.css';
 import { Todo } from './Todo'
-
-// typeを使って、取得するTodoオブジェクトの各要素に型を与える
-type TodoType = {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-};
+import { TodoType } from './types/todo'
 
 function App() {
   // stateへの型の指定
@@ -35,7 +28,12 @@ function App() {
           // 下記のコードだと、useridがundefinedになる
           // todo.と入力すると、候補(userId)を出してくれる
           // 必要なpropsが足りていなくてもエラーとならない問題があるので、propsに型を与えて解決する(Todo.tsxで)
-          <Todo key={todo.id} title={todo.title} userId={todo.userId} completed={todo.completed} />
+          <Todo
+            key={todo.id}
+            title={todo.title}
+            userId={todo.userId}
+            completed={todo.completed}
+          />
         )
       })}
     </div>
